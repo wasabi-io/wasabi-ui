@@ -1,0 +1,61 @@
+{
+  "name": "wasabi-ui",
+  "version": "1.0.0-alpha.1",
+  "description": "Typescript & React Base Components",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node ./tools/test.js",
+    "testd": "node ./tools/testd.js",
+    "test:electron:debug": "electron-mocha --renderer --interactive --opts ./tools/test/mocha.opts",
+    "test:electron": "electron-mocha --renderer --opts ./tools/test/mocha.opts",
+    "build": "rimraf ./build && node ./tools/build.js",
+    "build:lib": "tsc -p .",
+    "docs": "typedoc --out ./docs/ ./src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wasabi-io/wasabi-ui.git"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "component",
+    "form"
+  ],
+  "author": "kamilbukum@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wasabi-io/wasabi-ui/issues"
+  },
+  "homepage": "https://github.com/wasabi-io/wasabi-ui#readme",
+  "devDependencies": {
+    "@types/chai-enzyme": "^0.6.2",
+    "@types/enzyme": "^2.8.5",
+    "@types/mocha": "^2.2.41",
+    "@types/prop-types": "^15.5.1",
+    "@types/react": "^16.0.2",
+    "@types/react-dom": "^15.5.2",
+    "chai": "^4.1.1",
+    "chai-enzyme": "^0.8.0",
+    "colors": "^1.1.2",
+    "electron": "^1.7.5",
+    "electron-mocha": "^4.0.0",
+    "enzyme": "^2.9.1",
+    "mocha": "^3.5.0",
+    "react-addons-test-utils": "15.6.0",
+    "react-dom": "16.0.0-alpha.12",
+    "react-test-renderer": "16.0.0-alpha.12",
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.3.0",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.4.2",
+    "wasabi-common": "^1.0.12"
+  },
+  "dependencies": {
+    "@types/validate.js": "^0.0.2",
+    "prop-types": "^15.5.10",
+    "react": "16.0.0-alpha.12",
+    "validate.js": "^0.11.1"
+  }
+}
