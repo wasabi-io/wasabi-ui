@@ -2,9 +2,7 @@
 
 Provides Base Components for React and React-Native
 
-[![npm package](https://badge.fury.io/gh/wasabi-io/wasabi-ui.svg)](https://badge.fury.io/gh/wasabi-io/wasabi-ui.svg)
 [![Build Status](https://travis-ci.org/wasabi-io/wasabi-ui.svg?branch=master)](https://travis-ci.org/wasabi-io/wasabi-ui)
-[![codecov](https://codecov.io/gh/wasabi-io/wasabi-ui/branch/master/graph/badge.svg)](https://codecov.io/gh/wasabi-io/wasabi-ui)
 
 ### Motivation
 
