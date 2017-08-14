@@ -5,10 +5,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "node ./tools/test.js",
     "testd": "node ./tools/testd.js",
     "test:electron:debug": "electron-mocha --renderer --interactive --opts ./tools/test/mocha.opts",
-    "test:electron": "electron-mocha --renderer --opts ./tools/test/mocha.opts",
+    "test": "electron-mocha --renderer --opts ./tools/test/mocha.opts",
     "build": "rimraf ./build && node ./tools/build.js",
     "build:lib": "tsc -p .",
     "docs": "typedoc --out ./docs/ ./src/"
