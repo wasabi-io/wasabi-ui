@@ -1,9 +1,6 @@
 import * as React from "react";
 import { Types } from "wasabi-common";
-
-export interface State {
-
-}
+import {Props} from "wasabi-common/lib/types/Objects";
 
 /**
  * Base component which wraps render function in a try catch structure
@@ -11,7 +8,8 @@ export interface State {
  * Exception thrown, so protect component life cycle.
  */
 
-abstract class Component<P extends Readonly<P>, S extends State> extends React.Component<P, S> {
+abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Component<P, {}> {
+    state: S;
     /**
      *
      */
@@ -22,7 +20,6 @@ abstract class Component<P extends Readonly<P>, S extends State> extends React.C
     /**
      * Creates an instance of BaseComponent.
      * @param {Object} props
-     * @param {any} defaultProps
      * @param {any} context
      */
     public constructor(props: P, context?: any) {
@@ -41,4 +38,4 @@ abstract class Component<P extends Readonly<P>, S extends State> extends React.C
     }
 }
 
-export default Component;
+export default Stateful;

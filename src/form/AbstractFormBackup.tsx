@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormManager from "./FormManager";
-import Component from "../Component";
+import Stateful from "../Stateful";
 import InputElement, { FormItem, FormItemCallback, FormItemProps } from "./AbstractFormElement";
 import Objects from "wasabi-common/lib/types/Objects";
 
@@ -32,7 +32,7 @@ export interface FormInputProps {
     }
 }
 
-class AbstractForm extends Component<FormProps, FormState>{
+class AbstractForm extends Stateful<FormProps, FormState>{
     private inputProps: FormInputProps;
     public static propTypes = {
         fields: PropTypes.arrayOf(PropTypes.object),

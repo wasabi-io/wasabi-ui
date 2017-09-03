@@ -1,4 +1,4 @@
-import Component from "../Component";
+import Stateful from "../Stateful";
 
 export interface FormItemCallback {
     (name: string, value: any): any
@@ -16,7 +16,7 @@ export interface FormElements {
     [key: string]: FormElement
 }
 
-export interface FormItem<P extends FormItemProps, S extends {}>extends Component<P, S> {
+export interface FormItem<P extends FormItemProps, S extends {}>extends Stateful<P, S> {
     isValid() : boolean
 }
 

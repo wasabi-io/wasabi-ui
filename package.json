@@ -2,14 +2,13 @@
   "name": "wasabi-ui",
   "version": "1.0.0-alpha.1",
   "description": "Typescript & React Base Components",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "testd": "node ./tools/testd.js",
-    "test:electron:debug": "electron-mocha --renderer --interactive --opts ./tools/test/mocha.opts",
+    "testd": "electron-mocha --renderer --interactive --opts ./tools/test/mocha.opts",
     "test": "electron-mocha --renderer --opts ./tools/test/mocha.opts",
-    "build": "rimraf ./build && node ./tools/build.js",
-    "build:lib": "tsc -p .",
+    "build": "rimraf ./lib && node ./tools/build.js",
+    "build:lib": "tsc -p ./tsconfig.lib.json",
     "docs": "typedoc --out ./docs/ ./src/"
   },
   "repository": {
@@ -30,31 +29,35 @@
   "homepage": "https://github.com/wasabi-io/wasabi-ui#readme",
   "devDependencies": {
     "@types/chai-enzyme": "^0.6.2",
-    "@types/enzyme": "^2.8.5",
-    "@types/mocha": "^2.2.41",
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.2",
-    "@types/react-dom": "^15.5.2",
-    "chai": "^4.1.1",
+    "@types/enzyme": "^2.8.6",
+    "@types/mocha": "^2.2.42",
+    "@types/prop-types": "15.5.1",
+    "@types/react": "15.6.1",
+    "@types/react-dom": "^15.5.4",
+    "@types/sinon": "^2.3.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "chai": "^4.1.2",
     "chai-enzyme": "^0.8.0",
     "colors": "^1.1.2",
-    "electron": "^1.7.5",
-    "electron-mocha": "^4.0.0",
+    "electron": "^1.8.0",
+    "electron-mocha": "^4.0.1",
     "enzyme": "^2.9.1",
     "mocha": "^3.5.0",
-    "react-addons-test-utils": "15.6.0",
-    "react-dom": "16.0.0-alpha.12",
-    "react-test-renderer": "16.0.0-alpha.12",
+    "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
+    "sinon": "^3.2.1",
     "ts-node": "^3.3.0",
     "typedoc": "^0.8.0",
-    "typescript": "^2.4.2",
-    "wasabi-common": "^1.0.12"
+    "typescript": "^2.5.2"
   },
   "dependencies": {
-    "@types/validate.js": "^0.0.2",
-    "prop-types": "^15.5.10",
-    "react": "16.0.0-alpha.12",
-    "validate.js": "^0.11.1"
+    "wasabi-common": "2.0.0-beta.4"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0-0 || ^16.0.0-0",
+    "react-dom": "^15.0.0-0 || ^16.0.0-0",
+    "prop-types": "^15.5.10 || ^16.0.0-0"
   }
 }

@@ -24,6 +24,7 @@
     "outDir": "./lib"
   },
   "exclude": [
+    "./__test__",
     "./build",
     "./tools",
     "./node_modules/**/*"
