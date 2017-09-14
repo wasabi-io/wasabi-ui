@@ -17,13 +17,12 @@ export interface PatternParams extends CheckerParams {
     pattern: RegExp
 }
 
-
 const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 const checkers = {
     required: {
         message: "${name} is required",
-        fn: (value: any , params: CheckerParams): boolean => {
+        fn: (value: any, params: CheckerParams): boolean => {
             switch (Types.getRawName(value)) {
                 case Types.ToString.Array:
                     return Arrays.has(value);

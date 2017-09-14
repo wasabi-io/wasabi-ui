@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Types } from "wasabi-common";
+import {Types} from "wasabi-common";
 import {Props} from "wasabi-common/lib/types/Objects";
+import Binder from "wasabi-common/lib/lang/Binder";
 
 /**
  * Base component which wraps render function in a try catch structure
@@ -24,6 +25,7 @@ abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Co
      */
     public constructor(props: P, context?: any) {
         super(props, context);
+        Binder.bindAll(this);
     }
 
     /**

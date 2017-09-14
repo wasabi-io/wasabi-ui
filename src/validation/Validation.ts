@@ -6,6 +6,24 @@ import {Checker, CheckerAsBoolean, CheckerAsString, CheckerValue} from "./Checke
 import checkers from "./checkers";
 
 export class Validation extends Map<string, Checker> {
+    private static getParams(params: Props, value: any) {
+        if (!params) params = {};
+        if (!params.value) {
+            params.value = value;
+        }
+        return params;
+    }
+
+    private static getMessage(result: any, message: string): string {
+        if (typeof result === "boolean") {
+            return message || "";
+        } else if (typeof result === "string") {
+            return result || message;
+        } else {
+            return message || result.toString();
+        }
+    }
+
     /**
      *
      * @param {string} key
@@ -89,25 +107,6 @@ export class Validation extends Map<string, Checker> {
             return Strings.template(resultMessage, Validation.getParams(params, value));
         }
         return result.toString();
-    }
-
-
-    private static getParams(params: Props, value: any) {
-        if (!params) params = {};
-        if (!params.value) {
-            params.value = value;
-        }
-        return params;
-    }
-
-    private static getMessage(result: any, message: string): string {
-        if (typeof result === "boolean") {
-            return message || "";
-        } else if (typeof result === "string") {
-            return result || message;
-        } else {
-            return message || result.toString();
-        }
     }
 
 }

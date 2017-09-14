@@ -1,10 +1,9 @@
-import PropTypes from "prop-types";
-import Input, {InputProps, InputState} from "./Input";
+import Input, {InputProps} from "./Input";
 import Stateless from "../Stateless";
 import {Props} from "wasabi-common/lib/types/Objects";
 
 abstract class StatelessInput<I, V = any, P = I & InputProps<V>> extends Stateless<P> {
-    public static propTypes = Input.propTypes;
+    public static propTypes = Input.propTypes as any;
     public static defaultProps = Input.defaultProps;
 
     protected input: Input<I, V, P>;

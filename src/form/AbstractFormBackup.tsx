@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import FormManager from "./FormManager";
 import Stateful from "../Stateful";
-import InputElement, { FormItem, FormItemCallback, FormItemProps } from "./AbstractFormElement";
+import InputElement, {FormItem, FormItemCallback, FormItemProps} from "./AbstractFormElement";
 import Objects from "wasabi-common/lib/types/Objects";
 
 export interface FormCallback {
@@ -32,8 +32,7 @@ export interface FormInputProps {
     }
 }
 
-class AbstractForm extends Stateful<FormProps, FormState>{
-    private inputProps: FormInputProps;
+class AbstractForm extends Stateful<FormProps, FormState> {
     public static propTypes = {
         fields: PropTypes.arrayOf(PropTypes.object),
         propsOfFields: PropTypes.object,
@@ -45,32 +44,7 @@ class AbstractForm extends Stateful<FormProps, FormState>{
         propsOfFields: {},
         autoValidate: false
     };
-    public constructor(props: FormProps) {
-        super(props);
-        this.inputProps = {
-            fields: {}
-        };
-        this.state = AbstractForm.initFieldProps(this.inputProps, props, this.onChange);
-    }
-    public componentWillReceiveProps(nextProps: FormProps) {
-        this.state = AbstractForm.initFieldProps(this.inputProps, nextProps, this.onChange);
-    }
-    /**
-     * Configures all input elements and add them to the JSX.Element array.
-     * @returns {JSX.Element[]}
-     */
-    protected renderItems(): JSX.Element[] {
-        let elements: JSX.Element[] = [];
-        for (let i = 0; i < this.props.fields.length; i++) {
-            let field = this.props.fields[i];
-            let inputElement: FormItemProps = this.inputProps.fields[field.name];
-            let Component = inputElement.component;
-            inputElement.props.value = this.state[field.name];
-            elements.push(<Component ref={field.name} key={field.name} autoValidate={this.props.autoValidate} {...inputElement.props} />);
-        }
-        return elements;
-    }
-
+    private inputProps: FormInputProps;
     /**
      * Triggered if any element change.
      * @param name
@@ -90,14 +64,12 @@ class AbstractForm extends Stateful<FormProps, FormState>{
         }
     };
 
-    public getValues() {
-        return this.state
-    }
-
-    public isValid(): boolean {
-        return Objects.forEach(this.refs, (ref: FormItem<FormItemProps, any>) => {
-            return ref.isValid();
-        })
+    public constructor(props: FormProps) {
+        super(props);
+        this.inputProps = {
+            fields: {}
+        };
+        this.state = AbstractForm.initFieldProps(this.inputProps, props, this.onChange);
     }
 
     public static initFieldProps(innerPropsRef: FormInputProps, componentProps: FormProps, onChangeCallbackForm: FormItemCallback): any {
@@ -115,7 +87,7 @@ class AbstractForm extends Stateful<FormProps, FormState>{
     public static initFieldProp(field: FormItemProps, additionalFieldProps: { [key: string]: any }, onChangeCallbackForm: FormItemCallback): FormItemProps {
 
         let fieldElement: InputElement = FormManager.get(field.type);
-        let { onChange, type, name, ...props } = field;
+        let {onChange, type, name, ...props} = field;
         let fieldElementProp: FormItemProps = {
             name,
             component: fieldElement.component,
@@ -135,6 +107,37 @@ class AbstractForm extends Stateful<FormProps, FormState>{
             fieldElementProp.props = Objects.mergeDefaults(fieldElement.defaultProps, fieldElementProp.props);
         }
         return fieldElementProp;
+    }
+
+    public componentWillReceiveProps(nextProps: FormProps) {
+        this.state = AbstractForm.initFieldProps(this.inputProps, nextProps, this.onChange);
+    }
+
+    public getValues() {
+        return this.state
+    }
+
+    public isValid(): boolean {
+        return Objects.forEach(this.refs, (ref: FormItem<FormItemProps, any>) => {
+            return ref.isValid();
+        })
+    }
+
+    /**
+     * Configures all input elements and add them to the JSX.Element array.
+     * @returns {JSX.Element[]}
+     */
+    protected renderItems(): JSX.Element[] {
+        let elements: JSX.Element[] = [];
+        for (let i = 0; i < this.props.fields.length; i++) {
+            let field = this.props.fields[i];
+            let inputElement: FormItemProps = this.inputProps.fields[field.name];
+            let Component = inputElement.component;
+            inputElement.props.value = this.state[field.name];
+            elements.push(<Component ref={field.name} key={field.name}
+                                     autoValidate={this.props.autoValidate} {...inputElement.props} />);
+        }
+        return elements;
     }
 }
 

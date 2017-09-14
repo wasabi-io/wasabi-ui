@@ -1,5 +1,5 @@
-import { Objects } from "wasabi-common";
-import FormElement, { FormElements } from "./AbstractFormElement";
+import {Objects} from "wasabi-common";
+import FormElement, {FormElements} from "./AbstractFormElement";
 
 export default class FormManager {
     /**

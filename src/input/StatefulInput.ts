@@ -1,14 +1,13 @@
-import PropTypes from "prop-types";
-import Input, {InputProps, InputState} from "./Input";
+import Input, {InputProps} from "./Input";
 import Stateful from "../Stateful";
 import {Props} from "wasabi-common/lib/types/Objects";
 
 abstract class StatefulInput<I, S, V = any, P = I & InputProps<V>> extends Stateful <P, S> {
-    public static propTypes = Input.propTypes;
+    public static propTypes = Input.propTypes as any;
     public static defaultProps = Input.defaultProps;
 
-    private input: Input<I, V, P>;
-    private viewProps: I;
+    protected input: Input<I, V, P>;
+    protected viewProps: I;
 
     public constructor(props: P) {
         super(props);
@@ -16,9 +15,10 @@ abstract class StatefulInput<I, S, V = any, P = I & InputProps<V>> extends State
         this.viewProps = this.input.getViewProps();
     }
 
+
     public componentWillReceiveProps(nextProps: P) {
         this.input.componentWillReceiveProps(nextProps);
-        this.viewProps = this.input.getViewProps();
+        this.viewProps = this.input.getViewProps() as any;
     }
 
     public isValid(reValidate?: boolean, data?: Props) {

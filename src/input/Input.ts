@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import {validation, CheckerValue, CheckerAsString} from "../validation";
+import * as PropTypes from "prop-types";
+import {CheckerAsString, CheckerValue, validation} from "../validation";
 import Objects, {Props} from "wasabi-common/lib/types/Objects";
 import Arrays from "wasabi-common/lib/types/Arrays";
 import {has} from "wasabi-common";
@@ -25,10 +25,6 @@ export interface InputProps<V> {
 }
 
 export default class Input<I, V = any, P = I & InputProps<V>> {
-    private props: InputProps<V>;
-    private value: V;
-    private _errorMessages: string[];
-
     public static propTypes = {
         name: PropTypes.string.isRequired,
         type: PropTypes.string,
@@ -37,24 +33,30 @@ export default class Input<I, V = any, P = I & InputProps<V>> {
         validations: PropTypes.object,
         onChange: PropTypes.func
     };
-
     public static defaultProps = {
         autoValidate: true,
         validation: {
             checkers: ([] as any[])
         }
     };
-
+    private props: InputProps<V>;
+    private value: V;
     private viewProps: I;
     private defaultProps: any;
 
     public constructor(props: P, defaultProps: any) {
         if (!defaultProps) {
-            defaultProps = Input.defaultProps;
+            defaultProps = Objects.clone(Input.defaultProps);
         }
         this.defaultProps = defaultProps;
-        this.props = Objects.mergeDefaults(this.defaultProps, props);
+        this.props = Objects.merge(props, defaultProps);
         this.excludeProps(this.props);
+    }
+
+    private _errorMessages: string[];
+
+    public get errorMessages(): string[] {
+        return this._errorMessages;
     }
 
     public excludeProps(props: any) {
@@ -113,10 +115,6 @@ export default class Input<I, V = any, P = I & InputProps<V>> {
             return this.props.onChange(this.props.name, value);
         }
         return true;
-    }
-
-    public get errorMessages(): string[] {
-        return this._errorMessages;
     }
 }
 

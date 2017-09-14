@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {expect} from 'chai';
-import {mount, render, shallow} from 'enzyme'
+import {mount} from 'enzyme'
 import Stateless from "wasabi-ui/lib/Stateless";
 
 describe("Stateless", () => {

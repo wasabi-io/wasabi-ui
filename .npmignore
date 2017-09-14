@@ -15,3 +15,5 @@
 /.travis.yml
 /mocha.opts
 /tsconfig.json
+*.tgz
+

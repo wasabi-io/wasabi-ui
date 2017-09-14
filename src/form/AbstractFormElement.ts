@@ -9,6 +9,7 @@ export interface FormItemProps {
     type?: string,
     value?: any,
     onChange?: FormItemCallback,
+
     [key: string]: any
 }
 
@@ -17,7 +18,7 @@ export interface FormElements {
 }
 
 export interface FormItem<P extends FormItemProps, S extends {}>extends Stateful<P, S> {
-    isValid() : boolean
+    isValid(): boolean
 }
 
 export interface FormElement {

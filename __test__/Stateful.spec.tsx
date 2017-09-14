@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {expect} from 'chai';
-import {mount, render, shallow} from 'enzyme'
+import {mount} from 'enzyme'
 import Stateful from 'wasabi-ui/lib/Stateful';
 
 describe("Stateful", () => {
@@ -35,6 +35,7 @@ describe("Stateful", () => {
             value: string
             items: string[]
         }
+
         interface WrapperState {
 
         }
@@ -45,7 +46,7 @@ describe("Stateful", () => {
                     <div>
                         <div id="value">${this.props.value}</div>
                         <div id="items">
-                            { this.props.items.map((item) => {
+                            {this.props.items.map((item) => {
                                 return (
                                     <div>item</div>
                                 );
@@ -69,20 +70,21 @@ describe("Stateful", () => {
                     items: []
                 }
             }
+
             render(): JSX.Element {
                 return (
-                    <MyComponent value={this.state.value} items={this.state.items} />
+                    <MyComponent value={this.state.value} items={this.state.items}/>
                 )
             }
         }
 
-        const wrapper = mount(<Wrapper />); // mount/render/shallow when applicable
+        const wrapper = mount(<Wrapper/>); // mount/render/shallow when applicable
         let componentWrapper = wrapper.find(MyComponent);
         expect(componentWrapper).to.have.tagName("div");
         expect(componentWrapper.find("#value")).to.text("$Step 1");
         expect(componentWrapper.find("#items").children()).to.have.length(0);
 
-        wrapper.setState({ value: 'Step 2', items: ["Test"] });
+        wrapper.setState({value: 'Step 2', items: ["Test"]});
         componentWrapper = wrapper.find(MyComponent);
         expect(componentWrapper).to.have.tagName("div");
         expect(componentWrapper.find("#value")).to.text("$Step 2");

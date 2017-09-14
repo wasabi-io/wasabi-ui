@@ -21,6 +21,7 @@
     "sourceMap": false,
     "jsx": "react",
     "declaration": true,
+    "stripInternal": true,
     "outDir": "./lib"
   },
   "exclude": [
