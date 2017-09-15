@@ -1,4 +1,3 @@
-import {ResourceResponse} from './Resource';
 import axios, {AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse} from 'axios';
 import Objects from 'wasabi-common/lib/types/Objects';
 import urlJoin from 'url-join';

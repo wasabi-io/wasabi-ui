@@ -12,10 +12,16 @@ describe("Stateful", () => {
         }
 
         interface MyComponentState {
-
+            element: string
         }
 
         class MyComponent extends Stateful<MyComponentProps, MyComponentState> {
+            public constructor(props?: MyComponentProps){
+                super(props);
+                this.state = {
+                    element: ""
+                }
+            }
             render() {
                 return (
                     <div>${this.props.value}</div>

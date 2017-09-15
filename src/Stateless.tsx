@@ -30,9 +30,10 @@ abstract class Stateless<P extends Readonly<P>> extends React.Component<P, {}> {
      * Decides ant update is necessary for re-rendering.
      * Compares old props and state objects with the newer ones without going deep.
      * @param {Object} nextProps
+     * @param { any } nextState
      * @returns {boolean} "true" component shoud update ,"false" otherwise.
      */
-    public shouldComponentUpdate(nextProps: any): boolean {
+    public shouldComponentUpdate(nextProps?: P, nextState?: any): boolean {
         return !Types.equals(nextProps, this.props);
     }
 }

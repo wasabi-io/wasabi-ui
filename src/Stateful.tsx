@@ -9,8 +9,7 @@ import Binder from "wasabi-common/lib/lang/Binder";
  * Exception thrown, so protect component life cycle.
  */
 
-abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Component<P, {}> {
-    state: S;
+abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Component<P, S> {
     /**
      *
      */
@@ -35,7 +34,7 @@ abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Co
      * @param {Object} nextState
      * @returns {boolean} "true" component shoud update ,"false" otherwise.
      */
-    public shouldComponentUpdate(nextProps: any, nextState: any): boolean {
+    public shouldComponentUpdate(nextProps?: P, nextState?: S): boolean {
         return !Types.equals(nextProps, this.props) || !Types.equals(nextState, this.state)
     }
 }
