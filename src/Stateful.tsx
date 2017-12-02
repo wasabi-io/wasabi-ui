@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Types} from "wasabi-common";
-import {Props} from "wasabi-common/lib/types/Objects";
 import Binder from "wasabi-common/lib/lang/Binder";
+import {Props} from "wasabi-common/lib/types/Objects";
 
 /**
  * Base component which wraps render function in a try catch structure
@@ -14,7 +14,7 @@ abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Co
      *
      */
     public refs: {
-        [string: string]: any
+        [key: string]: any;
     };
 
     /**
@@ -35,7 +35,7 @@ abstract class Stateful<P extends Readonly<P>, S extends Props> extends React.Co
      * @returns {boolean} "true" component shoud update ,"false" otherwise.
      */
     public shouldComponentUpdate(nextProps?: P, nextState?: S): boolean {
-        return !Types.equals(nextProps, this.props) || !Types.equals(nextState, this.state)
+        return !Types.equals(nextProps, this.props) || !Types.equals(nextState, this.state);
     }
 }
 

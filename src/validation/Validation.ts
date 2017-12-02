@@ -1,13 +1,15 @@
+import {has} from "wasabi-common";
 import Map from "wasabi-common/lib/collection/Map";
 import {Props} from "wasabi-common/lib/types/Objects";
-import {has} from "wasabi-common";
 import Strings from "wasabi-common/lib/types/Strings";
 import {Checker, CheckerAsBoolean, CheckerAsString, CheckerValue} from "./Checker";
 import checkers from "./checkers";
 
 export class Validation extends Map<string, Checker> {
     private static getParams(params: Props, value: any) {
-        if (!params) params = {};
+        if (!params) {
+            params = {};
+        }
         if (!params.value) {
             params.value = value;
         }
@@ -30,9 +32,8 @@ export class Validation extends Map<string, Checker> {
      * @param {string} message
      */
     public setMessage(key: string, message: string) {
-        let checker = this.get(key);
-        if (checker) {
-            checker.message = message;
+        if (this.get(key)) {
+            this.get(key).message = message;
         }
     }
 
@@ -44,7 +45,7 @@ export class Validation extends Map<string, Checker> {
         if (!messages) {
             return;
         }
-        for (let key in messages) {
+        for (const key in messages) {
             if (messages.hasOwnProperty(key)) {
                 this.setMessage(key, messages[key]);
             }
@@ -60,9 +61,9 @@ export class Validation extends Map<string, Checker> {
     public put(key: string, checker: Checker): CheckerValue {
         if (typeof checker === "function") {
             checker = {
+                fn: checker,
                 message: null,
-                fn: checker
-            }
+            };
         }
         super.put(key, checker);
         return checker;
@@ -76,7 +77,7 @@ export class Validation extends Map<string, Checker> {
     }
 
     public checkByName(key: string, value: any, params?: Props, data?: Props, message?: string): string {
-        let checker = this.get(key) as CheckerValue;
+        const checker = this.get(key) as CheckerValue;
         return this.checkByFn(checker.fn, value, params, data, message || checker.message);
     }
 
@@ -93,7 +94,7 @@ export class Validation extends Map<string, Checker> {
     }
 
     public checkByFn(checker: CheckerAsBoolean | CheckerAsString, value: any, params?: Props, data?: Props, message?: string): string {
-        let result = checker(value, data);
+        const result = checker(value, data);
 
         if (!has(result)) {
             return;
@@ -102,7 +103,7 @@ export class Validation extends Map<string, Checker> {
             return;
         }
 
-        let resultMessage = Validation.getMessage(result, message);
+        const resultMessage = Validation.getMessage(result, message);
         if (resultMessage != null) {
             return Strings.template(resultMessage, Validation.getParams(params, value));
         }
@@ -111,6 +112,6 @@ export class Validation extends Map<string, Checker> {
 
 }
 
-const checker = new Validation();
-checker.putAll(checkers);
-export default checker;
+const validation = new Validation();
+validation.putAll(checkers);
+export default validation;

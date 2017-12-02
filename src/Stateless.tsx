@@ -1,6 +1,8 @@
 import * as React from "react";
-import Types from "wasabi-common/lib/util/Types";
+import {SFC} from "react";
+import {Types} from "wasabi-common";
 import Binder from "wasabi-common/lib/lang/Binder";
+import Generator from "wasabi-common/lib/util/Generator";
 
 /**
  * Base Stateless Component which wraps render function in a try catch structure
@@ -8,13 +10,19 @@ import Binder from "wasabi-common/lib/lang/Binder";
  * Exception thrown, so protect component life cycle.
  */
 
+export interface StatelessFC<P = {}, FP = {}> extends SFC<P> {
+    render?(fp?: FP): string | JSX.Element | JSX.Element[];
+}
+
 abstract class Stateless<P extends Readonly<P>> extends React.Component<P, {}> {
     /**
      *
      */
     public refs: {
-        [string: string]: any
+        [key: string]: any;
     };
+    /* tslint:disable */
+    protected _id: string = Generator.guid();
 
     /**
      * Creates an instance of BaseComponent.
@@ -36,7 +44,10 @@ abstract class Stateless<P extends Readonly<P>> extends React.Component<P, {}> {
     public shouldComponentUpdate(nextProps?: P, nextState?: any): boolean {
         return !Types.equals(nextProps, this.props);
     }
+
+    public get id(): string {
+        return this._id;
+    }
 }
 
 export default Stateless;
-
