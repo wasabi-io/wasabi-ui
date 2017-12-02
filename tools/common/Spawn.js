@@ -1,14 +1,12 @@
-let colors = require('colors');
-const {merge} = require("./util/Objects");
+const colors = require('colors');
+const Objects = require("./util/Objects");
 
-module.exports = (cmd, parameters, task) =
->
-{
+module.exports = function (cmd, parameters, task) {
     const spawn = require('child_process').spawn;
 
-    let options = task.env ? (task.env.options || {}) : {};
+    var options = task.env ? (task.env.options || {}) : {};
     if (process.env.options) {
-        options = merge(JSON.parse(process.env.options), options);
+        options = Objects.merge(JSON.parse(process.env.options), options);
     }
 
     var processEnv = Object.create(process.env);
@@ -23,24 +21,20 @@ module.exports = (cmd, parameters, task) =
         env: processEnv
     });
     task.tag = task.tag || task.command;
-    command.stdout.on('data', (data) = > {
+    command.stdout.on('data', function (data) {
         var dataStr = data.toString();
-    if (dataStr.indexOf("error TS") != -1) {
-        dataStr = dataStr.red;
-    }
-    console.log(`${task.tag[task.pColor]}: ` + dataStr);
-})
-    ;
-    command.stderr.on('data', (data) = > {
-        console.error(`${task.tag[task.pColor]}: ` + data.toString().red);
-})
-    ;
-    command.on('close', (code) = > {
-        console.log(`${task.tag[task.pColor]}: child process exited with code ${code}`);
-    if (task.main) {
-        process.exit(code);
-    }
-})
-    ;
-}
-;
+        if (dataStr.indexOf("error TS") !== -1) {
+            dataStr = dataStr.red;
+        }
+        console.log(task.tag[task.pColor] + " : " + dataStr);
+    });
+    command.stderr.on('data', function (data) {
+        console.error(task.tag[task.pColor] + ": " + data.toString().red);
+    });
+    command.on('close', function (code) {
+        console.log(task.tag[task.pColor] + ": child process exited with code  " + code);
+        if (task.main) {
+            process.exit(code);
+        }
+    });
+};

@@ -1,7 +1,7 @@
 const PackageUtil = require("./PackageUtil");
 const Spawn = require("./Spawn");
 
-let colors = [
+const colors = [
     "black",
     "red",
     "green",
@@ -15,61 +15,52 @@ let colors = [
 ];
 
 function getRandomColor() {
-    let min = Math.ceil(0);
-    let max = Math.floor(colors.length - 1);
-    let rand = Math.floor(Math.random() * (max - min)) + min;
+    const min = Math.ceil(0);
+    const max = Math.floor(colors.length - 1);
+    const rand = Math.floor(Math.random() * (max - min)) + min;
     return colors[rand];
 }
 
-const spawn = (task, taskConf) =
->
-{
-    if (task.interval) {
-        setTimeout(() = > {
-            Spawn(taskConf.command,
-            taskConf.parameters,
-            task
-    )
-        ;
-    },
-        task.interval
-    )
-        ;
-    } else {
-        Spawn(
-            taskConf.command,
-            taskConf.parameters,
-            task
-        )
+const spawn = function (task, taskConf) {
+        if (task.interval) {
+            setTimeout(function () {
+                    Spawn(taskConf.command,
+                        taskConf.parameters,
+                        task
+                    )
+                    ;
+                },
+                task.interval
+            )
+            ;
+        } else {
+            Spawn(
+                taskConf.command,
+                taskConf.parameters,
+                task
+            )
+        }
     }
-}
 ;
 
-const PipeTasks = (tasks) =
->
-{
-    let spawns = [];
-    for (let i = 0; i < tasks.length; i++) {
-        let task = tasks[i];
-        let taskConf = PackageUtil.getSpawnParameters(task.command);
+const PipeTasks = function (tasks) {
+    const spawns = [];
+    for (var i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        const taskConf = PackageUtil.getSpawnParameters(task.command);
         task.pColor = task.pColor || getRandomColor();
-        spawns.push((props) = > {
+        spawns.push(function (props) {
             spawn(task, taskConf)
-        }
-    )
+        })
     }
 
     return {
-        execute: (props) = > {
-        for(let i = 0;
-    i < spawns.length;
-    i++
-)
-    {
-        spawns[i](props);
+        execute: function (props) {
+            for (var i = 0; i < spawns.length; i++) {
+                spawns[i](props);
+            }
+        }
     }
-}
-}
-}
+};
 
 module.exports = PipeTasks;

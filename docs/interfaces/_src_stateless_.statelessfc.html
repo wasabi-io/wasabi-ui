@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MinParams | wasabi-ui</title>
+	<title>StatelessFC | wasabi-ui</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,29 +56,84 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_src_validation_checkers_.html">&quot;src/validation/checkers&quot;</a>
+					<a href="../modules/_src_stateless_.html">&quot;src/Stateless&quot;</a>
 				</li>
 				<li>
-					<a href="_src_validation_checkers_.minparams.html">MinParams</a>
+					<a href="_src_stateless_.statelessfc.html">StatelessFC</a>
 				</li>
 			</ul>
-			<h1>Interface MinParams</h1>
+			<h1>Interface StatelessFC&lt;P, FP&gt;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Base Stateless Component which wraps render function in a try catch structure
+							Any child components who extends from this component will get protection when
+						Exception thrown, so protect component life cycle.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>P</h4>
+					</li>
+					<li>
+						<h4>FP</h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_src_validation_checker_.checkerparams.html" class="tsd-signature-type">CheckerParams</a>
+						<span class="tsd-signature-type">StatelessComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">MinParams</span>
+								<span class="target">StatelessFC</span>
 							</li>
 						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3 class="tsd-before-signature">Callable</h3>
+				<ul class="tsd-signatures tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span>, context<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReactElement</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in node_modules/@types/react/index.d.ts:317</li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Base Stateless Component which wraps render function in a try catch structure
+									Any child components who extends from this component will get protection when
+								Exception thrown, so protect component life cycle.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>props: <span class="tsd-signature-type">P</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> context: <span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReactElement</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
+							<span class="tsd-signature-symbol"> | </span>
+							<span class="tsd-signature-type">null</span>
+						</h4>
 					</li>
 				</ul>
 			</section>
@@ -86,38 +141,100 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_validation_checkers_.minparams.html#min" class="tsd-kind-icon">min</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_validation_checkers_.minparams.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_stateless_.statelessfc.html#contexttypes" class="tsd-kind-icon">context<wbr>Types</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_stateless_.statelessfc.html#defaultprops" class="tsd-kind-icon">default<wbr>Props</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_stateless_.statelessfc.html#displayname" class="tsd-kind-icon">display<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_stateless_.statelessfc.html#proptypes" class="tsd-kind-icon">prop<wbr>Types</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_src_stateless_.statelessfc.html#render" class="tsd-kind-icon">render</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="min" class="tsd-anchor"></a>
-					<h3>min</h3>
-					<div class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="contexttypes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> context<wbr>Types</h3>
+					<div class="tsd-signature tsd-kind-icon">context<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ValidationMap</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from StatelessComponent.contextTypes</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/wasabi-io/wasabi-ui/blob/66dc1b5/src/validation/checkers.ts#L9">src/validation/checkers.ts:9</a></li>
+							<li>Defined in node_modules/@types/react/index.d.ts:320</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="defaultprops" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> default<wbr>Props</h3>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_src_validation_checker_.checkerparams.html">CheckerParams</a>.<a href="_src_validation_checker_.checkerparams.html#name">name</a></p>
+						<p>Inherited from StatelessComponent.defaultProps</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/wasabi-io/wasabi-ui/blob/66dc1b5/src/validation/Checker.ts#L14">src/validation/Checker.ts:14</a></li>
+							<li>Defined in node_modules/@types/react/index.d.ts:321</li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="displayname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> display<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from StatelessComponent.displayName</p>
+						<ul>
+							<li>Defined in node_modules/@types/react/index.d.ts:322</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="proptypes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prop<wbr>Types</h3>
+					<div class="tsd-signature tsd-kind-icon">prop<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ValidationMap</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">P</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from StatelessComponent.propTypes</p>
+						<ul>
+							<li>Defined in node_modules/@types/react/index.d.ts:319</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="render" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> render</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">render<span class="tsd-signature-symbol">(</span>fp<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">FP</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/wasabi-io/wasabi-ui/blob/66dc1b5/src/Stateless.tsx#L14">src/Stateless.tsx:14</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fp: <span class="tsd-signature-type">FP</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Element</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">Element</span><span class="tsd-signature-symbol">[]</span>
+							</h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -157,7 +274,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_src_stateful_.html">"src/<wbr>Stateful"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_src_stateless_.html">"src/<wbr>Stateless"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -190,7 +307,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_src_validation_validation_.html">"src/validation/<wbr>Validation"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_src_validation_checkers_.html">"src/validation/checkers"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -200,33 +317,33 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_validation_checkers_.maxparams.html" class="tsd-kind-icon">Max<wbr>Params</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../classes/_src_stateless_.stateless.html" class="tsd-kind-icon">Stateless</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_validation_checkers_.minparams.html" class="tsd-kind-icon">Min<wbr>Params</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_src_stateless_.statelessfc.html" class="tsd-kind-icon">StatelessFC</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_validation_checkers_.minparams.html#min" class="tsd-kind-icon">min</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_stateless_.statelessfc.html#contexttypes" class="tsd-kind-icon">context<wbr>Types</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_src_validation_checkers_.minparams.html#name" class="tsd-kind-icon">name</a>
+								<a href="_src_stateless_.statelessfc.html#defaultprops" class="tsd-kind-icon">default<wbr>Props</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_stateless_.statelessfc.html#displayname" class="tsd-kind-icon">display<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_stateless_.statelessfc.html#proptypes" class="tsd-kind-icon">prop<wbr>Types</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_src_stateless_.statelessfc.html#render" class="tsd-kind-icon">render</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_validation_checkers_.patternparams.html" class="tsd-kind-icon">Pattern<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_src_validation_checkers_.html#emailregex" class="tsd-kind-icon">email<wbr>Regex</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
-						<a href="../modules/_src_validation_checkers_.html#checkers" class="tsd-kind-icon">checkers</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
